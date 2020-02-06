@@ -9,7 +9,7 @@ import AuthProvider = firebase.auth.AuthProvider;
 export class AuthService {
 
   constructor(public afAuth: AngularFireAuth) {
-    console.log(afAuth.auth.currentUser);
+    console.log(this.user);
   }
 
   public login() {

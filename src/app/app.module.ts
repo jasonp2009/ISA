@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './firebase/auth.service';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_mf2JdKxHVn9oH6hviy5_vgejYUGvNG4",
@@ -25,19 +26,21 @@ const firebaseConfig = {
   measurementId: "G-LXVSEEMXYT"
 };
 
-// const appRoutes: Routes = [
-//   { path: 'crisis-center', component: CrisisListComponent },
-//   { path: 'hero/:id',      component: HeroDetailComponent },
-//   {
-//     path: 'heroes',
-//     component: HeroListComponent,
-//     data: { title: 'Heroes List' }
-//   },
-//   { path: '',
-//     redirectTo: '/heroes',
-//     pathMatch: 'full'
-//   },
-// ];
+const appRoutes: Routes = [
+  { path: '', component: LandingComponent },
+  { path: "profile", component: ProfileComponent },
+  // { path: 'crisis-center', component: CrisisListComponent },
+  // { path: 'hero/:id',      component: HeroDetailComponent },
+  // {
+  //   path: 'heroes',
+  //   component: HeroListComponent,
+  //   data: { title: 'Heroes List' }
+  // },
+  // { path: '',
+  //   redirectTo: '/heroes',
+  //   pathMatch: 'full'
+  // },
+];
 
 
 @NgModule({
@@ -47,14 +50,15 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    // RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes)
   ],
   declarations: [
     AppComponent,
     HelloComponent,
     TodoListComponent,
     LandingComponent,
-    ProfileComponent
+    ProfileComponent,
+    NavbarComponent
   ],
   bootstrap: [
     AppComponent
