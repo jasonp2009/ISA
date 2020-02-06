@@ -1,0 +1,5 @@
+<nav>
+  <a routerLink="profile">Profile</a>
+  <button *ngIf="!auth.user" (click)="auth.login()">Login</button>
+  <button *ngIf="auth.user" (click)="auth.logout()">Logout</button>
+</nav>
