@@ -3,38 +3,79 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import AuthProvider = firebase.auth.AuthProvider;
 
+
+enum Status {
+  loggedOut,
+  loggingIn,
+  loggedIn,
+  loggingOut
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  public Status = Status;
+  public user = JSON.parse(localStorage.getItem('currentUser'));
+  public curStatus = Status.loggedOut;
 
   constructor(public afAuth: AngularFireAuth) {
-    console.log(this.user);
+    if (this.user) {
+      console.log("Signed in as ", this.user.displayName);
+      console.log(this.user);
+      this.curStatus = Status.loggedIn
+    } else {
+      console.log("Not signed in");
+      this.curStatus = Status.loggedOut;
+    }
+    afAuth.auth.onAuthStateChanged((ud) => {
+      this.user = ud;
+      localStorage.setItem("currentUser", JSON.stringify(ud));
+      console.log("Auth state changed");
+      console.log(ud);
+      if (ud) {
+        this.curStatus = Status.loggedIn;
+      } else {
+        this.curStatus = Status.loggedOut;
+      }
+    });
   }
 
-  public login() {
+  public async login() {
+    this.curStatus = Status.loggingIn;
     if (this.user) {
-      console.log(this.afAuth.auth.currentUser);
+      console.log(this.user);
       throw("Already logged in");
+      this.curStatus = Status.loggedIn;
+      return null;
     } else {
       this.afAuth.auth.setPersistence(auth.Auth.Persistence.LOCAL);
-      this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider).then(ret => {
-        console.log(ret);
-        console.log(this.afAuth.user);
+      return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider).then(ret => {
+        console.log("Successfully logged in");
+        console.log(ret.user);
+        this.user = ret.user;
+        this.curStatus = Status.loggedIn;
+        return ret.user;
       }).catch(ret => {
-        console.log(ret);
+        console.log("Error logging in");
+        throw(ret);
+        this.user = null;
+        this.curStatus = Status.loggedOut;
+        return null;
       });
     }
   }
-  public logout() {
+  public async logout() {
+    this.curStatus = Status.loggingOut;
     if (!this.user) {
       throw ("Already logged out");
+      this.curStatus = Status.loggedOut;
+      return null;
     } else {
-      this.afAuth.auth.signOut();
+      return this.afAuth.auth.signOut().then( () => {
+        this.curStatus = Status.loggedOut;
+        return null;
+      });
     }
-  }
-
-  get user() {
-    return this.afAuth.auth.currentUser;
   }
 }

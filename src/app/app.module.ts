@@ -14,6 +14,7 @@ import { AuthService } from './firebase/auth.service';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FirestoreService } from './firebase/firestore.service';
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_mf2JdKxHVn9oH6hviy5_vgejYUGvNG4",
@@ -64,7 +65,8 @@ const appRoutes: Routes = [
     AppComponent
   ],
   providers: [
-  AuthService
+  AuthService,
+  FirestoreService
   ]
 })
 export class AppModule { }

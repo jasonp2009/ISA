@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../firebase/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -7,11 +8,21 @@ import { AuthService } from '../firebase/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
-  constructor(private auth: AuthService) { }
-
-  ngOnInit() {
+  constructor(private auth: AuthService, private router: Router) {
   }
 
+  login() {
+    this.auth.login().then((ret) => {
+      this.router.navigate(['profile']);
+      return;
+    })
+  }
+
+  logout() {
+    this.auth.logout().then((ret) => {
+      return;
+    })
+  }
 }
