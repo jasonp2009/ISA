@@ -17,16 +17,14 @@ enum Status {
 export class AuthService {
   public Status = Status;
   public user = JSON.parse(localStorage.getItem('currentUser'));
-  public curStatus = Status.loggedOut;
+  public curStatus = this.user ? Status.loggedIn : Status.loggedOut;
 
   constructor(public afAuth: AngularFireAuth) {
     if (this.user) {
       console.log("Signed in as ", this.user.displayName);
       console.log(this.user);
-      this.curStatus = Status.loggedIn
     } else {
       console.log("Not signed in");
-      this.curStatus = Status.loggedOut;
     }
     afAuth.auth.onAuthStateChanged((ud) => {
       this.user = ud;

@@ -29,7 +29,7 @@ const firebaseConfig = {
 
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
-  { path: "profile", component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent }
   // { path: 'crisis-center', component: CrisisListComponent },
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
@@ -65,8 +65,8 @@ const appRoutes: Routes = [
     AppComponent
   ],
   providers: [
-  AuthService,
-  FirestoreService
+    AuthService,
+    FirestoreService
   ]
 })
 export class AppModule { }
