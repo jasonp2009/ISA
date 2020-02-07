@@ -19,7 +19,9 @@ export class AuthService {
   public user = JSON.parse(localStorage.getItem('currentUser'));
   public curStatus = this.user ? Status.loggedIn : Status.loggedOut;
 
-  constructor(public afAuth: AngularFireAuth) {
+  constructor (
+    public afAuth: AngularFireAuth,
+  ) {
     if (this.user) {
       console.log("Signed in as ", this.user.displayName);
       console.log(this.user);

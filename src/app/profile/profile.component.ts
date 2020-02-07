@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../firebase/auth.service';
+import { FirestoreService } from '../firebase/firestore.service';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService } from '../firebase/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private db: FirestoreService) { }
 
   ngOnInit() {
   }
