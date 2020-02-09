@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
+import { TodoListComponent, TodoEditor } from './todo-list/todo-list.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -19,6 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
 
 
 const firebaseConfig = {
@@ -61,7 +64,10 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatButtonModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   declarations: [
     AppComponent,
@@ -69,6 +75,7 @@ const appRoutes: Routes = [
     LandingComponent,
     ProfileComponent,
     NavbarComponent,
+    TodoEditor
   ],
   bootstrap: [
     AppComponent
@@ -76,6 +83,9 @@ const appRoutes: Routes = [
   providers: [
     AuthService,
     FirestoreService
+  ],
+  entryComponents: [
+    TodoEditor
   ]
 })
 export class AppModule { }
