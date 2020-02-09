@@ -16,7 +16,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FirestoreService } from './firebase/firestore.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_mf2JdKxHVn9oH6hviy5_vgejYUGvNG4",
@@ -56,7 +59,9 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatCheckboxModule
   ],
   declarations: [
     AppComponent,

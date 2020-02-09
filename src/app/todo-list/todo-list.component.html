@@ -1,1 +1,15 @@
-<p>Todo list component</p>
+<ng-container *ngIf="db.todos">
+	<div class="titlebar">
+		<h1>Todo List</h1>
+		<button mat-button>Add todo</button>
+	</div>
+	<mat-list *ngFor="let todo of db.todos; index as i">
+		<mat-divider *ngIf="!i"></mat-divider>
+		<mat-list-item>
+			<mat-checkbox>
+			<p>{{todo.title}}</p>
+			</mat-checkbox>
+		</mat-list-item>
+		<mat-divider></mat-divider>
+	</mat-list>
+</ng-container>

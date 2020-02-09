@@ -1,0 +1,7 @@
+.titlebar div {
+	display: flex;
+	justify-content: space-between;
+}
+
+.titlebar div h1,button {
+}
