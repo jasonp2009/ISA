@@ -24,6 +24,7 @@ export class TodoListComponent implements OnInit {
 
  	newTodo(): void {
     const dialogRef = this.dialog.open(TodoEditor, {
+    	width: '300px',
     	data: {title: null, duration: null, due: null}
     });
 
@@ -37,7 +38,8 @@ export class TodoListComponent implements OnInit {
 
 @Component({
   selector: 'todo-editor',
-  templateUrl: 'todo-editor.html',
+  templateUrl: 'todo-editor.component.html',
+  styleUrls: ['./todo-editor.component.css']
 })
 export class TodoEditor {
 

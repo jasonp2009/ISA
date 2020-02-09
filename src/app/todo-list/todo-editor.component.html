@@ -1,0 +1,18 @@
+<div class="todo-input" mat-dialog-content>
+	<mat-form-field>
+		<mat-label>Title</mat-label>
+		<input matInput [(ngModel)]="data.title">
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Duration (hours)</mat-label>
+		<input matInput type="number" [(ngModel)]="data.duration">
+	</mat-form-field>
+	<mat-form-field>
+		<mat-label>Due</mat-label>
+		<input matInput type="datetime-local" [(ngModel)]="data.due">
+	</mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>
