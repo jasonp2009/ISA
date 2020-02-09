@@ -14,6 +14,8 @@ import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FirestoreService } from './firebase/firestore.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_mf2JdKxHVn9oH6hviy5_vgejYUGvNG4",
@@ -50,7 +52,8 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,
