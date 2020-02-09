@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 
 import { AngularFireModule } from '@angular/fire';
@@ -55,7 +54,6 @@ const appRoutes: Routes = [
   ],
   declarations: [
     AppComponent,
-    HelloComponent,
     TodoListComponent,
     LandingComponent,
     ProfileComponent,

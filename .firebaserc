@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "scheduler-65eb0": {
+      "hosting": {
+        "ISA": [
+          "scheduler-65eb0"
+        ]
+      }
+    }
+  }
+}

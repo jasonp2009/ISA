@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 export interface User {
-  displayName: string = "";
-  email: string = "";
-  photoURL: string = "";
+  displayName: string;
+  email: string;
+  photoURL: string;
 }
 
 @Injectable({
