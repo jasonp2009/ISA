@@ -16,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FirestoreService } from './firebase/firestore.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatButtonModule} from '@angular/material/button';
 
 const firebaseConfig = {
   apiKey: "AIzaSyC_mf2JdKxHVn9oH6hviy5_vgejYUGvNG4",
@@ -30,7 +31,8 @@ const firebaseConfig = {
 
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'todoList', component: TodoListComponent}
   // { path: 'crisis-center', component: CrisisListComponent },
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
@@ -53,14 +55,15 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     AngularFireAuthModule,
     RouterModule.forRoot(appRoutes),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   declarations: [
     AppComponent,
     TodoListComponent,
     LandingComponent,
     ProfileComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   bootstrap: [
     AppComponent

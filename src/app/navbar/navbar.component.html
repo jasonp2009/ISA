@@ -1,11 +1,12 @@
 <nav>
-  <a routerLink="profile">Profile</a>
-  <div [ngSwitch]="auth.curStatus">
-    <button *ngSwitchCase="auth.Status.loggedOut" (click)="login()">Login</button>
-    <button *ngSwitchCase="auth.Status.loggedIn" (click)="logout()">Logout</button>
-    <button *ngSwitchCase="auth.Status.loggingIn">Logging in...</button>
-    <button *ngSwitchCase="auth.Status.loggingOut">Logging out...</button>
-  </div>
+  <a mat-button routerLink="profile">Profile</a>
+  <a mat-button routerLink="todoList">Todo List</a>
+  <ng-container [ngSwitch]="auth.curStatus">
+    <button mat-button *ngSwitchCase="auth.Status.loggedOut" (click)="login()">Login</button>
+    <button mat-button *ngSwitchCase="auth.Status.loggedIn" (click)="logout()">Logout</button>
+    <button mat-button *ngSwitchCase="auth.Status.loggingIn">Logging in...</button>
+    <button mat-button *ngSwitchCase="auth.Status.loggingOut">Logging out...</button>
+  </ng-container>
   <!-- <button *ngIf="user" (click)="auth.logout()">Logout</button>
   <button *ngIf="!user" (click)="auth.login()">Login</button> -->
   <!-- <button *ngIf="auth.curStatus==auth.Status.loggingIn">Logging in...</button> -->

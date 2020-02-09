@@ -15,11 +15,7 @@ export interface User {
 export class FirestoreService {
 
   private userDoc: AngularFirestoreDocument<User>;
-  user: User = {
-    displayName: "John Smith",
-    email: "johnsmith@gmail.com",
-    photoURL: "johnsmith.jpg"
-  };
+  user: User = null;
 
   constructor (
     private afs: AngularFirestore,

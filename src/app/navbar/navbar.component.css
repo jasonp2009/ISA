@@ -1,0 +1,12 @@
+nav a,button {
+	flex-basis: auto;
+	flex-grow: 1;
+}
+
+nav {
+	flex-direction: row;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: stretch;
+
+}

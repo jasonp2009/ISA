@@ -1,2 +1,4 @@
-<h1>Welcome {{db.user.displayName}}</h1>
-<img src="{{db.user.photoURL}}">
+<ng-container *ngIf="db.user">
+	<h1>Welcome {{db.user.displayName}}</h1>
+	<img src="{{db.user.photoURL}}">
+</ng-container>

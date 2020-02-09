@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { Router } from '@angular/router';
 import AuthProvider = firebase.auth.AuthProvider;
 
 
@@ -21,6 +22,7 @@ export class AuthService {
 
   constructor (
     public afAuth: AngularFireAuth,
+    private router: Router
   ) {
     if (this.user) {
       console.log("Signed in as ", this.user.displayName);
@@ -74,6 +76,7 @@ export class AuthService {
     } else {
       return this.afAuth.auth.signOut().then( () => {
         this.curStatus = Status.loggedOut;
+        this.router.navigate([""]);
         return null;
       });
     }
