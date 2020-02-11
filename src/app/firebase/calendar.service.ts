@@ -42,7 +42,6 @@ export class CalendarService {
       gapi.client.load('calendar', 'v3', () => {
       	console.log('loaded calendar');
       	console.log(gapi);
-      	this.getCalendar();
       });
     });
   }
@@ -54,7 +53,8 @@ export class CalendarService {
 	async getCalendar() {
 		return gapi.client.calendar.events.list({
 	    calendarId: 'primary',
-	    timeMin: new Date().toISOString()
+	    timeMin: new Date().toISOString(),
+	    orderby: "startDate"
 		}).then((ret) => {
 			this.calendarItemsData = []
 			ret.result.items.forEach((item) => {
@@ -66,7 +66,7 @@ export class CalendarService {
 	}
 
 	get calendarItems() {
-		if (this.calendarItemsData == []) {
+		if (this.calendarItemsData === []) {
 			this.getCalendar().then(() => {
 				return this.calendarItemsData;
 			})

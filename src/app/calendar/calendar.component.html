@@ -1,4 +1,4 @@
 <button (click)="cs.log()">Log</button>
 <button (click)="cs.getCalendar()">Get Calendar</button>
 
-	<p *ngFor="let item of cs.calendarItems | async">{{item.summary}}</p>
+	<p *ngFor="let item of cs.calendarItems">{{item.summary}}</p>
