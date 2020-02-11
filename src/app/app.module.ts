@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 const firebaseConfig = {
@@ -39,7 +40,8 @@ const firebaseConfig = {
 const appRoutes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'todoList', component: TodoListComponent}
+  { path: 'todoList', component: TodoListComponent},
+  { path: 'calendar', component: CalendarComponent}
   // { path: 'crisis-center', component: CrisisListComponent },
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
@@ -77,7 +79,8 @@ const appRoutes: Routes = [
     LandingComponent,
     ProfileComponent,
     NavbarComponent,
-    TodoEditor
+    TodoEditor,
+    CalendarComponent
   ],
   bootstrap: [
     AppComponent

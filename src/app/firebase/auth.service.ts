@@ -52,7 +52,9 @@ export class AuthService {
       return null;
     } else {
       this.afAuth.auth.setPersistence(auth.Auth.Persistence.LOCAL);
-      return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider).then(ret => {
+      let provider = new auth.GoogleAuthProvider;
+      provider.addScope("https://www.googleapis.com/auth/calendar");
+      return this.afAuth.auth.signInWithPopup(provider).then(ret => {
         console.log("Successfully logged in");
         console.log(ret.user);
         this.user = ret.user;

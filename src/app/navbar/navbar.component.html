@@ -1,6 +1,7 @@
 <nav>
   <a mat-button routerLink="profile">Profile</a>
   <a mat-button routerLink="todoList">Todo List</a>
+  <a mat-button routerLink="calendar">Calendar</a>
   <ng-container [ngSwitch]="auth.curStatus">
     <button mat-button *ngSwitchCase="auth.Status.loggedOut" (click)="login()">Login</button>
     <button mat-button *ngSwitchCase="auth.Status.loggedIn" (click)="logout()">Logout</button>
