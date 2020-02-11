@@ -6,9 +6,16 @@
 	<mat-list *ngFor="let todo of db.todos; index as i">
 		<mat-divider *ngIf="!i"></mat-divider>
 		<mat-list-item>
-			<mat-checkbox>
+			<mat-checkbox></mat-checkbox>
 			<p>{{todo.title}}</p>
-			</mat-checkbox>
+			<p>{{todo.duration}}</p>
+			<p>{{todo.due}}</p>
+			<button mat-icon-button (click)="editTodo(todo)">
+				<mat-icon>edit</mat-icon>
+			</button>
+			<button mat-icon-button (click)="db.deleteTodo(todo)">
+				<mat-icon>delete</mat-icon>
+			</button>
 		</mat-list-item>
 		<mat-divider></mat-divider>
 	</mat-list>

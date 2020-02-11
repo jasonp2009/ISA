@@ -5,3 +5,19 @@
 
 .titlebar div h1,button {
 }
+
+mat-list {
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+mat-list-item {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+}
+
+mat-list-item mat-checkbox, p, button {
+	flex-grow: 1;
+}

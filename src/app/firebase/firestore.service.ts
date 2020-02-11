@@ -16,16 +16,20 @@ export interface Todo {
   completed: boolean;
 }
 
+export interface TodoId extends Todo {
+  id: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class FirestoreService {
 
   private userDoc: AngularFirestoreDocument<User>;
-  user: User = null;
+  public user: User = null;
 
-  private todosDoc: AngularFirestoreCollection<Todo>;
-  todos: Todo[] = null;
+  private todosCollection: AngularFirestoreCollection<Todo>;
+  public todos: TodoId[] = null;
 
   constructor (
     private afs: AngularFirestore,
@@ -52,22 +56,35 @@ export class FirestoreService {
           console.log(data);
           this.user = data;
         });
-        this.todosDoc = this.userDoc.collection<Todo>('todos');
-        this.todosDoc.valueChanges().subscribe((data) => {
-          console.log("TODO DATA");
+        this.todosCollection = this.userDoc.collection<Todo>('todos');
+        this.todosCollection.snapshotChanges().subscribe((data) => {
+          console.log("Snapshot changes");
           console.log(data);
-          this.todos = data;
+          this.todos = [];
+          data.forEach((td) => {
+            let tdDoc = td.payload.doc
+            this.todos = [...this.todos, {
+              id: tdDoc.id,
+              title: tdDoc.data().title,
+              duration: tdDoc.data().duration,
+              due: tdDoc.data().due,
+              completed: tdDoc.data().completed
+            }];
+          })
         })
       }
     });
   }
 
-  // loadUserData() {
-  //   if (this.auth.user) {
-  //     let userDoc = this.afs.doc('users/'+this.auth.user.uid);
-  //     console.log(userDoc);
-  //   } else {
-  //     throw ("User data error");
-  //   }
-  // }
+  addTodo(todo: Todo) {
+    this.todosCollection.add(todo);
+  }
+
+  editTodo(todo: TodoId) {
+    this.todosCollection.doc<Todo>(todo.id).update(todo);
+  }
+
+  deleteTodo(todo: TodoId) {
+    this.todosCollection.doc<Todo>(todo.id).delete();
+  }
 }

@@ -1,10 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FirestoreService, Todo } from '../firebase/firestore.service';
+import { FirestoreService, Todo, TodoId } from '../firebase/firestore.service';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 @Component({
@@ -25,12 +27,32 @@ export class TodoListComponent implements OnInit {
  	newTodo(): void {
     const dialogRef = this.dialog.open(TodoEditor, {
     	width: '300px',
-    	data: {title: null, duration: null, due: null}
+    	data: {title: null, duration: null, due: null, completed: false}
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
+    	if (result) {
+    		console.log("Save");
+    		this.db.addTodo(result);
+    	} else {
+    		console.log("Cancel");
+    	}
+    });
+  }
+
+  editTodo(todo: TodoId): void {
+  	const dialogRef = this.dialog.open(TodoEditor, {
+    	width: '300px',
+    	data: todo
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    	if (result) {
+    		console.log("Save");
+    		this.db.editTodo(result);
+    	} else {
+    		console.log("Cancel");
+    	}
     });
   }
 
