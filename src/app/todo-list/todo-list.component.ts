@@ -56,6 +56,10 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  click() {
+  	console.log("Clicked");
+  }
+
 }
 
 @Component({

@@ -3,20 +3,20 @@
 		<h1>Todo List</h1>
 		<button mat-button (click)="newTodo()">Add todo</button>
 	</div>
-	<mat-list *ngFor="let todo of db.todos; index as i">
+	<mat-list>
 		<mat-divider *ngIf="!i"></mat-divider>
-		<mat-list-item>
-			<mat-checkbox></mat-checkbox>
-			<p>{{todo.title}}</p>
-			<p>{{todo.duration}}</p>
-			<p>{{todo.due}}</p>
-			<button mat-icon-button (click)="editTodo(todo)">
-				<mat-icon>edit</mat-icon>
-			</button>
-			<button mat-icon-button (click)="db.deleteTodo(todo)">
-				<mat-icon>delete</mat-icon>
-			</button>
-		</mat-list-item>
-		<mat-divider></mat-divider>
+		<ng-container *ngFor="let todo of db.todos; index as i">
+			<mat-list-item>
+				<mat-checkbox [ngModel]="todo.completed" (click)="todo.completed=!todo.completed;db.editTodo(todo)"></mat-checkbox>
+				<p>{{todo.title}}</p>
+				<button mat-icon-button (click)="editTodo(todo)">
+					<mat-icon>edit</mat-icon>
+				</button>
+				<button mat-icon-button (click)="db.deleteTodo(todo)">
+					<mat-icon>delete</mat-icon>
+				</button>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+		</ng-container>
 	</mat-list>
 </ng-container>

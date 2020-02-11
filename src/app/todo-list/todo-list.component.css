@@ -18,6 +18,14 @@ mat-list-item {
 	flex-direction: row;
 }
 
-mat-list-item mat-checkbox, p, button {
+mat-list-item p {
 	flex-grow: 1;
+}
+
+mat-list-item mat-checkbox {
+	padding-right: 5px;
+}
+
+mat-list-item mat-checkbox, button {
+	flex-grow: 0;
 }
