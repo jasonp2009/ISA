@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CalendarService } from '../firebase/calendar.service';
+
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cs: CalendarService) { }
 
   ngOnInit() {
   }

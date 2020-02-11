@@ -10,6 +10,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './firebase/auth.service';
+import { CalendarService } from './firebase/calendar.service';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -87,7 +88,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthService,
-    FirestoreService
+    FirestoreService,
+    CalendarService
   ],
   entryComponents: [
     TodoEditor

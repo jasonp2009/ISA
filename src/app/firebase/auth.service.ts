@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { Router } from '@angular/router';
-import AuthProvider = firebase.auth.AuthProvider;
 
 
 enum Status {
@@ -52,7 +51,7 @@ export class AuthService {
       return null;
     } else {
       this.afAuth.auth.setPersistence(auth.Auth.Persistence.LOCAL);
-      let provider = new auth.GoogleAuthProvider;
+      const provider = new auth.GoogleAuthProvider();
       provider.addScope("https://www.googleapis.com/auth/calendar");
       return this.afAuth.auth.signInWithPopup(provider).then(ret => {
         console.log("Successfully logged in");
